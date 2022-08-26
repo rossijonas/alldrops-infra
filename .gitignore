@@ -1,0 +1,11 @@
+# terraform files
+terraform.tfstate*
+.terraform
+.terraform.lock*
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# code editor files
+*.vim
