@@ -1,11 +1,19 @@
 # terraform files
-terraform.tfstate*
+**/.terraform/*
+*.tfstate
+*.tfstate.*
 .terraform
-.terraform.lock*
+.terraform.lock.hcl
 override.tf
 override.tf.json
 *_override.tf
 *_override.tf.json
+*.tfvars
+.terraformrc
+terraform.rc
 
 # code editor files
 *.vim
+
+#others
+crash.log
