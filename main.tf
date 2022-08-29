@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 
 locals {
-  bucket_name = "${var.bucket_name}_${random_pet.this.id}"
+  bucket_name = "${var.bucket_name}-${random_pet.this.id}"
 }
 
 resource "random_pet" "this" {

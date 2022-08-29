@@ -5,9 +5,11 @@ variable "region" {
 }
 
 variable "bucket_name" {
+  // Check "Bucket naming rules" before defining a name:
+  // https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html
   description = "First part of the bucket's name (bucket's full name is auto generated)."
   type        = string
-  default     = "alldrops_info_20220826_tcr"
+  default     = "alldrops-info-20220826-tcr"
 }
 
 variable "domain_name" {
