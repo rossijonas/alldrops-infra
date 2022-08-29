@@ -12,3 +12,13 @@ output "s3_bucket_website_domain_name" {
   description = "The bucket domain name"
   value       = aws_s3_bucket.alldrops_info.bucket_domain_name
 }
+
+output "s3_bucket_website_domain" {
+  description = "The domain of the website endpoint. This is used to create Route 53 alias records."
+  value       = aws_s3_bucket_website_configuration.alldrops_info_config.website_domain
+}
+
+output "s3_bucket_website_endpoint" {
+  description = "The website endpoint"
+  value       = aws_s3_bucket_website_configuration.alldrops_info_config.website_endpoint
+}
