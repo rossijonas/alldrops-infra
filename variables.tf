@@ -5,7 +5,14 @@ variable "region" {
 }
 
 variable "bucket_name" {
-  description = "Name of the bucket hosting the content"
+  description = "First part of the bucket's name (bucket's full name is auto generated)."
   type        = string
   default     = "alldrops_info_20220826_tcr"
 }
+
+variable "domain_name" {
+  type    = string
+  default = "alldrops.info"
+}
+
+
