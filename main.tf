@@ -22,18 +22,13 @@ resource "aws_s3_bucket" "alldrops_info" {
   bucket = local.bucket_name
 }
 
-# resource "aws_s3_bucket_acl" "alldrops_info_bucket_acl" {
-#   bucket = aws_s3_bucket.alldrops_info.bucket
-#   acl    = "private"
-# }
-
 resource "aws_s3_bucket_website_configuration" "alldrops_info_config" {
   bucket = aws_s3_bucket.alldrops_info.bucket
   index_document {
-    suffix = "index.html"
+    suffix = "/index.html"
   }
   error_document {
-    key = "404.html"
+    key = "/404.html"
   }
 }
 
