@@ -2,10 +2,10 @@ resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
   comment = "Identity used to allow Cloudfront access to S3"
 }
 
-data "aws_acm_certificate" "wildcard" {
-  domain   = "*.${var.domain_name}"
-  statuses = ["ISSUED"]
-}
+# data "aws_acm_certificate" "wildcard" {
+#   domain   = "*.${var.domain_name}"
+#   statuses = ["ISSUED"]
+# }
 
 resource "aws_cloudfront_distribution" "alldrops_info" {
   enabled             = true
@@ -55,9 +55,10 @@ resource "aws_cloudfront_distribution" "alldrops_info" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = data.aws_acm_certificate.wildcard.arn
-    ssl_support_method       = "sni-only"
-    minimum_protocol_version = var.minimum_protocol_version
+    cloudfront_default_certificate = true
+    #    acm_certificate_arn      = data.aws_acm_certificate.wildcard.arn
+    #    ssl_support_method       = "sni-only"
+    #    minimum_protocol_version = var.minimum_protocol_version
   }
 }
 
