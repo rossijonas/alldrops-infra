@@ -8,11 +8,6 @@ resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
 # }
 
 resource "aws_cloudfront_distribution" "alldrops_info" {
-  enabled             = true
-  is_ipv6_enabled     = true
-  default_root_object = "index.html"
-  aliases             = [aws_s3_bucket.alldrops_info.bucket]
-
   origin {
     domain_name = aws_s3_bucket.alldrops_info.bucket_domain_name
     origin_id   = aws_s3_bucket.alldrops_info.bucket
@@ -22,11 +17,9 @@ resource "aws_cloudfront_distribution" "alldrops_info" {
     }
   }
 
-  restrictions {
-    geo_restriction {
-      restriction_type = "none"
-    }
-  }
+  enabled             = true
+  is_ipv6_enabled     = true
+  default_root_object = "index.html"
 
   default_cache_behavior {
     target_origin_id       = aws_s3_bucket.alldrops_info.bucket
@@ -47,19 +40,18 @@ resource "aws_cloudfront_distribution" "alldrops_info" {
     }
   }
 
-  // Replace default CloudFront 403 error
-  custom_error_response {
-    error_caching_min_ttl = 3600
-    error_code            = 403
-    response_code         = 403
-    response_page_path    = "/404.html"
+  restrictions {
+    geo_restriction {
+      restriction_type = "none"
+    }
+  }
+
+  tags = {
+    Environment = "production"
   }
 
   viewer_certificate {
     cloudfront_default_certificate = true
-    #    acm_certificate_arn      = data.aws_acm_certificate.wildcard.arn
-    #    ssl_support_method       = "sni-only"
-    #    minimum_protocol_version = var.minimum_protocol_version
   }
 }
 

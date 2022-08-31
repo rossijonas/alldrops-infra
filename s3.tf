@@ -24,6 +24,11 @@ resource "aws_s3_bucket" "alldrops_info" {
   bucket = local.bucket_name
 }
 
+resource "aws_s3_bucket_acl" "alldrops_info_acl" {
+  bucket = aws_s3_bucket.alldrops_info.id
+  acl    = "private"
+}
+
 resource "aws_s3_bucket_website_configuration" "alldrops_info_config" {
   bucket = aws_s3_bucket.alldrops_info.bucket
   index_document {
