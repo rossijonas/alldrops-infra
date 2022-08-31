@@ -1,5 +1,5 @@
 resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
-  comment = "Identity used to allow Cloudfront access to S3"
+  comment = aws_s3_bucket.alldrops_info.bucket
 }
 
 # data "aws_acm_certificate" "wildcard" {
@@ -9,6 +9,7 @@ resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
 
 resource "aws_cloudfront_distribution" "alldrops_info" {
   enabled             = true
+  is_ipv6_enabled     = true
   default_root_object = "index.html"
   aliases             = [aws_s3_bucket.alldrops_info.bucket]
 
