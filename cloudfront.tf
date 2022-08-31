@@ -7,6 +7,14 @@ resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
 #   statuses = ["ISSUED"]
 # }
 
+resource "aws_cloudfront_function" "add_suffix" {
+  name    = "${local.bucket_name}-add-suffix"
+  runtime = "cloudfront-js-1.0"
+  comment = "add index.html suggix for non root urls"
+  publish = true
+  code    = file("add-suffix.js")
+}
+
 resource "aws_cloudfront_distribution" "alldrops_info" {
   origin {
     domain_name = aws_s3_bucket.alldrops_info.bucket_domain_name
@@ -17,9 +25,9 @@ resource "aws_cloudfront_distribution" "alldrops_info" {
     }
   }
 
-  enabled         = true
-  is_ipv6_enabled = true
-  # default_root_object = "index.html"
+  enabled             = true
+  is_ipv6_enabled     = true
+  default_root_object = "index.html"
 
   default_cache_behavior {
     target_origin_id       = aws_s3_bucket.alldrops_info.bucket
