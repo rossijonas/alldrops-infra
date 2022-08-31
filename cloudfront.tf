@@ -17,9 +17,9 @@ resource "aws_cloudfront_distribution" "alldrops_info" {
     }
   }
 
-  enabled             = true
-  is_ipv6_enabled     = true
-  default_root_object = "index.html"
+  enabled         = true
+  is_ipv6_enabled = true
+  # default_root_object = "index.html"
 
   default_cache_behavior {
     target_origin_id       = aws_s3_bucket.alldrops_info.bucket
