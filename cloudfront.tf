@@ -9,7 +9,7 @@ resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
 
 resource "aws_cloudfront_distribution" "alldrops_info" {
   origin {
-    domain_name = aws_s3_bucket.alldrops_info.id
+    domain_name = aws_s3_bucket.alldrops_info.bucket_regional_domain_name
     origin_id   = aws_s3_bucket.alldrops_info.bucket
 
     s3_origin_config {
