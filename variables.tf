@@ -26,5 +26,5 @@ variable "minimum_protocol_version" {
 variable "route53_ttl" {
   description = "The amount of time, in seconds, that you want DNS recursive resolvers to cache information about this record"
   type        = number
-  default     = 300
+  default     = 60
 }
