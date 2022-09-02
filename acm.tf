@@ -12,7 +12,7 @@ resource "aws_acm_certificate" "ssl_certificate" {
   }
 }
 
-resource "aws_acm_certificate_validation" "my_certificate_validation" {
+resource "aws_acm_certificate_validation" "alldrops_certificate_validation" {
   certificate_arn         = aws_acm_certificate.ssl_certificate.arn
   validation_record_fqdns = [aws_route53_record.all_drops_record.fqdn]
 }
