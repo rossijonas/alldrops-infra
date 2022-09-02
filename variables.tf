@@ -14,11 +14,17 @@ variable "bucket_name" {
 
 variable "domain_name" {
   type    = string
-  default = "alldrops.info"
+  default = "aws.alldrops.info"
 }
 
 variable "minimum_protocol_version" {
+  description = "Minimum version of the SSL protocol used for HTTPS connections. One of: SSLv3, TLSv1, TLSv1.1_2016, TLSv1.2_2018 , TLSv1.2_2019 and TLSv1.2_2021"
   type        = string
   default     = "TLSv1.2_2021"
-  description = "Minimum version of the SSL protocol used for HTTPS connections. One of: SSLv3, TLSv1, TLSv1.1_2016, TLSv1.2_2018 , TLSv1.2_2019 and TLSv1.2_2021"
+}
+
+variable "route53_ttl" {
+  description = "The amount of time, in seconds, that you want DNS recursive resolvers to cache information about this record"
+  type        = number
+  default     = 300
 }

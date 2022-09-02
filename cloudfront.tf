@@ -2,11 +2,6 @@ resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
   comment = aws_s3_bucket.alldrops_info.bucket
 }
 
-# data "aws_acm_certificate" "wildcard" {
-#   domain   = "*.${var.domain_name}"
-#   statuses = ["ISSUED"]
-# }
-
 resource "aws_cloudfront_function" "add_suffix" {
   name    = "${local.bucket_name}-add-suffix"
   runtime = "cloudfront-js-1.0"
@@ -64,7 +59,9 @@ resource "aws_cloudfront_distribution" "alldrops_info" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    # cloudfront_default_certificate = true
+    acm_certificate_arn = aws_acm_certificate.ssl_certificate.arn
+    ssl_support_method  = "sni-only"
   }
 }
 
