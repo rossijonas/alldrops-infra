@@ -59,11 +59,8 @@ resource "aws_cloudfront_distribution" "alldrops_info" {
   }
 
   viewer_certificate {
-    # cloudfront_default_certificate = true
     acm_certificate_arn = aws_acm_certificate.ssl_certificate.arn
     ssl_support_method  = "sni-only"
   }
-
-  depends_on = [aws_acm_certificate.ssl_certificate]
 }
 
