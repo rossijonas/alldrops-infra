@@ -2,9 +2,9 @@ resource "aws_route53_zone" "alldrops" {
   name = var.domain_name
 }
 
-resource "aws_route53_record" "alldrops_a" {
+resource "aws_route53_record" "root" {
   zone_id = aws_route53_zone.alldrops.zone_id
-  name    = ""
+  name    = var.domain_name
   type    = "A"
 
   alias {
@@ -14,7 +14,14 @@ resource "aws_route53_record" "alldrops_a" {
   }
 }
 
-resource "aws_route53_record" "alldrops_caa" {
+resource "aws_route53_record" "www" {
+  zone_id = aws_route53_zone.alldrops.zone_id
+  name    = "www.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = var.route53_ttl
+}
+
+resource "aws_route53_record" "caa" {
   zone_id = aws_route53_zone.alldrops.zone_id
   name    = var.domain_name
   type    = "CAA"

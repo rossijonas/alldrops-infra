@@ -14,6 +14,6 @@ output "route_53_name_servers" {
 }
 
 output "route_53_domain" {
-  description = "A list of name servers in associated delegation set"
-  value       = aws_route53_record.alldrops_a.fqdn
+  description = "Root domain name"
+  value       = aws_route53_record.root.fqdn
 }
