@@ -18,6 +18,7 @@ resource "aws_route53_record" "www" {
   zone_id = aws_route53_zone.alldrops.zone_id
   name    = "www.${var.domain_name}"
   type    = "CNAME"
+  records = [var.domain_name]
   ttl     = var.route53_ttl
 }
 
