@@ -18,7 +18,7 @@ resource "aws_route53_record" "alldrops_a_record" {
   alias {
     name                   = aws_cloudfront_distribution.alldrops_info.domain_name
     zone_id                = aws_cloudfront_distribution.alldrops_info.hosted_zone_id
-    evaluate_target_health = false
+    evaluate_target_health = true
   }
 }
 
