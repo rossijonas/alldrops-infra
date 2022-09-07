@@ -1,4 +1,4 @@
-resource "aws_cloudfront_origin_access_identity" "alldrops_info" {
+resource "aws_cloudfront_origin_access_identity" "alldrops" {
   comment = aws_s3_bucket.alldrops_info.bucket
 }
 
@@ -10,13 +10,13 @@ resource "aws_cloudfront_function" "add_suffix" {
   code    = file("add-suffix.js")
 }
 
-resource "aws_cloudfront_distribution" "alldrops_info" {
+resource "aws_cloudfront_distribution" "alldrops" {
   origin {
     domain_name = aws_s3_bucket.alldrops_info.bucket_domain_name
     origin_id   = aws_s3_bucket.alldrops_info.bucket
 
     s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.alldrops_info.cloudfront_access_identity_path
+      origin_access_identity = aws_cloudfront_origin_access_identity.alldrops.cloudfront_access_identity_path
     }
   }
 
