@@ -12,13 +12,13 @@ resource "aws_route53_zone" "all_drops_zone" {
 
 resource "aws_route53_record" "alldrops_a_record" {
   zone_id = aws_route53_zone.all_drops_zone.zone_id
-  name    = var.domain_name
+  name    = ""
   type    = "A"
 
   alias {
     name                   = aws_cloudfront_distribution.alldrops_info.domain_name
     zone_id                = aws_cloudfront_distribution.alldrops_info.hosted_zone_id
-    evaluate_target_health = false
+    evaluate_target_health = true
   }
 }
 
