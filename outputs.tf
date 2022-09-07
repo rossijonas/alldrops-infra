@@ -15,5 +15,5 @@ output "route_53_name_servers" {
 
 output "route_53_domain" {
   description = "Root domain name"
-  value       = aws_route53_record.record.fqdn
+  value       = aws_route53_record.root.fqdn
 }
