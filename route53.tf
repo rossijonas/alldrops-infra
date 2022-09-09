@@ -12,7 +12,7 @@ resource "aws_route53_record" "record" {
 
 resource "aws_route53_record" "root" {
   zone_id = aws_route53_zone.alldrops.zone_id
-  name    = ""
+  name    = var.domain_name
   type    = "A"
 
   alias {
