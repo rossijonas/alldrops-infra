@@ -1,13 +1,13 @@
 terraform {
-  #  backend "remote" {
-  #    organization = "alldrops"
-  #
-  #    workspaces {
-  #      name = "alldrops-infra"
-  #    }
-  # }
+  backend "remote" {
+    organization = "alldrops"
 
-  backend "local" {}
+    workspaces {
+      name = "alldrops-infra"
+    }
+  }
+
+  # backend "local" {}
 
   required_providers {
     aws = {
