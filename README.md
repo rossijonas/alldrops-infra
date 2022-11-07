@@ -8,11 +8,11 @@ The website alldrops.info is accessible on the following domain and subdomain:
 
 1. https://alldrops.info - Hosted on Netlify
 
-![](https://github.com/rossijonas/alldrops-infra/docs/001.png)
+![](https://raw.githubusercontent.com/rossijonas/alldrops-infra/main/docs/001.png)
 
 2. https://aws.alldrops.info - A clone, hosted on an AWS set of components, provisioned by the Terraform Infrastructure as Code contained in this repo.
 
-![](https://github.com/rossijonas/alldrops-infra/docs/002.png)
+![](https://raw.githubusercontent.com/rossijonas/alldrops-infra/main/docs/002.png)
 
 The repository's main goals is playing with Terraform/AWS, and serving as example for others.
 
